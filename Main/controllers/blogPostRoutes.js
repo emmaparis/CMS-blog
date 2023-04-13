@@ -1,6 +1,5 @@
-const BlogPost = require('../models/BlogPost');
-const User = require('../models/User');
-const Comment = require('../models/Comment');
+const router = require('express').Router();
+const { BlogPost, User, Comment } = require('../../models');
 
 // GET all blogPosts
 router.get('/', (req, res) => {
@@ -87,12 +86,11 @@ router.post('/', (req, res) => {
         });
 }
 );
-// PUT a blogPost
+// PUT update a blogPost
 router.put('/:id', (req, res) => {
     BlogPost.update(
         {
-            title: req.body.title,
-            content: req.body.content
+            title: req.body.title
         },
         {
             where: {
